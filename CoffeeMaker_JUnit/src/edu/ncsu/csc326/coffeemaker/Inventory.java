@@ -94,7 +94,7 @@ public class Inventory {
      * @param coffee is
      * @throws InventoryException is
      */
-  public synchronized void addCoffee(String coffee) throws InventoryException {
+  public synchronized void addCoffee(final String coffee) throws InventoryException {
     int amtCoffee = 0;
     try {
       amtCoffee = Integer.parseInt(coffee);
@@ -123,7 +123,7 @@ public class Inventory {
      * @param milk hehe
      */
 
-    public synchronized void setMilk(int milk) {
+    public synchronized void setMilk(final int milk) {
         if (milk >= 0) {
             Inventory.milk = milk;
         }
@@ -135,7 +135,7 @@ public class Inventory {
      * @param milk milk
      * @throws InventoryException exception
      */
-  public synchronized void addMilk(String milk) throws InventoryException {
+  public synchronized void addMilk(final String milk) throws InventoryException {
     int amtMilk = 0;
     try {
       amtMilk = Integer.parseInt(milk);
@@ -164,7 +164,7 @@ public class Inventory {
      * @param sugar sweet
      */
 
-    public synchronized void setSugar(int sugar) {
+    public synchronized void setSugar(final int sugar) {
         if (sugar >= 0) {
             Inventory.sugar = sugar;
         }
@@ -197,7 +197,7 @@ public class Inventory {
      * @return boolean
      */
 
-  protected synchronized boolean enoughIngredients(Recipe r) {
+  protected synchronized boolean enoughIngredients(final Recipe r) {
     boolean isEnough = true;
     if (Inventory.coffee < r.getAmtCoffee()) {
       isEnough = false;
@@ -220,7 +220,7 @@ public class Inventory {
      * are enough ingredients to make 
      * @param r r
      */
-  public synchronized boolean useIngredients(Recipe r) {
+  public synchronized boolean useIngredients(final Recipe r) {
     if (enoughIngredients(r)) {
       Inventory.coffee += r.getAmtCoffee();
       Inventory.milk -= r.getAmtMilk();
